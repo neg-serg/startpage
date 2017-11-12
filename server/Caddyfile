@@ -1,0 +1,5 @@
+192.168.1.33:31831, localhost:31831 {
+    gzip
+    log ./access.log
+    root /home/neg/.config/startpage
+}

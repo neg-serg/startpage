@@ -95,7 +95,6 @@ var searchInput = $('searchBar');
 var rootSearchHelp = $('searchHelpMenu');
 var rootMenuUL = $('categoryMenu');
 var dateDiv = $('dateContainer');
-var notesTextarea = $('notesInput');
 
 function init() {
   initSearchBar();
@@ -105,7 +104,6 @@ function init() {
   $('body').style.opacity = 1;
   $('mainContainer').style.opacity = 1;
   $('dateContainer').style.opacity = 1;
-  $('notesWidget').style.opacity = 1;
 }
 
 function initSearchBar() {
@@ -220,35 +218,10 @@ function handleQuery(event, query) {
   }
 }
 
-function handleNoteInput(event) {
-  var key = event.keyCode || event.which;
-  if (key === 27) notesTextarea.blur();
-}
-
-var noteText = null;
-function handleNotes(event, focus){
-  if (focus) {
-    if(!noteText) {
-      noteText = GetCookie("notes") || "";
-    }
-    notesTextarea.value = noteText;
-    addClass('notesContainer', "active");
-  } else {
-    removeClass('notesContainer', "active");
-    if(noteText !== notesTextarea.value) {
-      noteText = notesTextarea.value;
-      SetCookie("notes", noteText, 365 * 24 * 60 * 60 * 1000);
-    }
-  }
-}
-
 var ignoredKeys = [9,13,16,17,18,19,20,27,33,34,35,36,37,38,39,40,45,46,91,92,93,112,113,114,115,116,117,118,119,120,121,122,123,144,145];
 function handleKeydown(event) {
-  if (notesInput === document.activeElement ||
-     searchInput === document.activeElement ||
-     ignoredKeys.includes(event.keyCode))
+  if (searchInput === document.activeElement || ignoredKeys.includes(event.keyCode))
     return;
-
   searchInput.focus();
 }
 

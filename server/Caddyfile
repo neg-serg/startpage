@@ -1,3 +1,4 @@
+tls cert.crt cert.key
 192.168.1.33:31831, localhost:31831 {
     gzip
     root /home/neg/.config/startpage
